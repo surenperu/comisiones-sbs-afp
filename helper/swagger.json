@@ -1,0 +1,135 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Api para obtener comisiones prima afp de la pagina de sbs.  You can find out more about Swagger at [http://swagger.io](http://swagger.io), you can use the api key `special-key` to test the authorization filters.",
+        "version": "1.0.0",
+        "title": "Swagger Comision AFP",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "lx7pary@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },   
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Comisiones",
+            "description": "Obtiene las comisiones prima de las afp registradas en sbs"
+        }        
+    ],
+    "schemes": [        
+        "http",
+        "https"
+    ],
+    "paths": {      
+        "/api/comision-sbs/{year}/{month}": {
+            "get": {
+                "tags": [
+                    "Comisiones"
+                ],
+                "summary": "Buscar por año y mes",
+                "description": "Returns una lista de comsiones afp",
+                "operationId": "comision-sbs",
+                "produces": [ 
+                    "application/json",
+                    "application/xml"                   
+                ],
+                "parameters": [
+                    {
+                        "name": "year",
+                        "in": "path",
+                        "description": "Año",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "month",
+                        "in": "path",
+                        "description": "Mes",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ComisionPrimaSbs"
+                              }                           
+                        }
+                    }                    
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }     
+        }
+    },
+    "securityDefinitions": {
+        "comision_auth": {
+            "type": "oauth2",
+            "authorizationUrl": "https://comisiones-sbs.swagger.io/oauth/dialog",
+            "flow": "implicit",
+            "scopes": {
+                "write:pets": "modify comisiones in your account",
+                "read:pets": "read your comisiones"
+            }
+        },
+        "api_key": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "ComisionPrimaSbs": {
+            "type": "object",
+            "properties": {
+                "NombreComision": {
+                    "type": "string"                  
+                },
+                "ComisionFija": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ComisionSobreFlujo": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ComisionSobreFlujoMixta": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ComisionAnualMixta": {
+                    "type": "integer",
+                    "format": "int64"
+                }    ,
+                "PrimaSeguro": {
+                    "type": "integer",
+                    "format": "int64"
+                }  ,  
+                "AporteObligatorio": {
+                    "type": "integer",
+                    "format": "int64"
+                }  ,  
+                "RemuneracionMaxima": {
+                    "type": "integer",
+                    "format": "int64"           
+                }  
+            },
+            "xml": {
+                "name": "ComisionPrimaSbs"
+            }
+        }    
+    }
+   
+}

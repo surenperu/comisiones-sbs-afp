@@ -1,0 +1,26 @@
+{
+  "name": "afp-sbs",
+  "version": "1.0.0",
+  "description": "Consulta de comisiones de afp",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "startb": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Pariona",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "puppeteer": "^1.19.0",
+    "swagger-jsdoc": "^3.3.0",
+    "swagger-ui-express": "^4.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
