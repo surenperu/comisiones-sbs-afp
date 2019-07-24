@@ -1,5 +1,4 @@
 'use strict'
-
 const url = 'https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx';
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
